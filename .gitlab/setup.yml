@@ -1,0 +1,18 @@
+setup:
+  stage: setup
+  allow_failure: true
+  before_script:
+    - git config user.name "Sombra bot"
+    - git config user.email "bot@sombra.cc"
+    - pip install pre-commit
+  script:
+    - test -n $SOMBRA_GITLAB_ACCESS_TOKEN
+    - echo ${SOMBRA_GITLAB_ACCESS_TOKEN:0:5}
+    - bash -c "make qa-all || make qa-all"
+    - git add .
+    - git commit -m "add setup changes"
+    - git remote set-url --push origin https://sombra-bot:$SOMBRA_GITLAB_ACCESS_TOKEN@gitlab.com/$CI_PROJECT_PATH
+    - git remote show origin
+    - git push --follow-tags origin HEAD:$CI_COMMIT_REF_NAME
+  only:
+    - /^sombra\/.*$/

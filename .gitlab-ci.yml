@@ -1,0 +1,16 @@
+default:
+    image: python:3.11
+
+stages:
+  - setup
+  - quality
+  - build
+  - deploy
+
+include:
+  - .gitlab/setup.yml
+#  - .gitlab/qa.yml
+#  - .gitlab/legal.yml
+#  - .gitlab/security.yml
+#  - .gitlab/test.yml
+#  - .gitlab/build.yml

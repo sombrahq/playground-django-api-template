@@ -1,0 +1,8 @@
+license:
+  stage: quality
+  image: python:3.11
+  before_script:
+    - pip install --no-cache-dir poetry==1.6.1 liccheck
+    - poetry export | pip install --no-cache-dir -r /dev/stdin
+  script:
+    - make license

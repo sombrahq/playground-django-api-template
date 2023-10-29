@@ -1,0 +1,8 @@
+[tool.skjold]
+cache_dir = '.skjold_cache'  # Cache location (default: `~/.skjold/cache`).
+cache_expires = 86400  # Cache max. age.
+ignore_file = '.skjoldignore'  # Ignorefile location (default `.skjoldignore`).
+report_format = 'json'  # Output findings as `json`. Default is 'cli'.
+report_only = false  # Exit with non-zero exit code on findings.
+sources = ["pyup", "gemnasium"]  # Sources to check against.
+verbose = true  # Be verbose.

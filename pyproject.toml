@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "django-api-template"
+version = "0.0.0"
+description = "Django API Template"
+authors = ["Developer <developer@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "django_api_template" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.0"
+django-environ = "^0.11.2"
+djangorestframework = "^3.14.0"
+gunicorn = "^21.2.0"
+requests = "^2.31.0"
+whitenoise = "^6.5.0"
+
+[tool.poetry.group.local.dependencies]
+pytest = "^7.2.1"
+pytest-cov = "^4.0.0"
+pre-commit = "^3.0.4"
+liccheck = "^0.9.1"
+django-stubs = "^4.2.3"
+skjold = "^0.6.1"
+behave-django = "^1.4.0"
+mkdocs = "^1.5.3"
+
+[tool.poetry.group.dev.dependencies]
+better-exceptions = "^0.3.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+
+[tool.liccheck]
+authorized_licenses = [
+    "BSD",
+    "MIT",
+    "Apache Software",
+    "Mozilla Public License 2.0 (MPL 2.0)",
+]
+unauthorized_licenses = [
+]
+level = "PARANOID"
+dependencies = true
+optional_dependencies = []

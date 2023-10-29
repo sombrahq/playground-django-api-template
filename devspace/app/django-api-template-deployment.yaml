@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-api-template-system
+  labels:
+    component: django-api-template-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: django-api-template-web
+  template:
+    metadata:
+      labels:
+        component: django-api-template-web
+    spec:
+      containers:
+        - name: django-api-template
+          image: django-api-template
+          envFrom:
+            - configMapRef:
+                name: django-api-template-config
+            - secretRef:
+                name: django-api-template-secrets
+          ports:
+            - containerPort: 8000
+              name: django-api-template

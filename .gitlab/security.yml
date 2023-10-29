@@ -1,0 +1,7 @@
+security:
+  stage: quality
+  image: python:3.11
+  before_script:
+    - pip install --no-cache-dir skjold
+  script:
+    - make security
