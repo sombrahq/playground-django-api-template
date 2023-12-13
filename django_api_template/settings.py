@@ -14,7 +14,7 @@ import environ
 
 env = environ.FileAwareEnv()
 env.prefix = "DJANGO_"
-if file := env.str("ENV_FILE", ""):
+if file := env.str("ENV_FILE", ".env"):
     env.read_env(file)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     # Project Apps
     "django_api_template.app_core",
-    "django_api_template.app_admin",
     "django_api_template.app_api",
 ]
 

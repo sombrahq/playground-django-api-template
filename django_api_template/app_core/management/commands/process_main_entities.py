@@ -2,7 +2,7 @@ import logging
 
 from django.core import paginator
 from django.core.management import BaseCommand
-from django_api_template.app_core import api
+from django_api_template.app_core import internal
 
 
 class Command(BaseCommand):
@@ -17,10 +17,10 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        pages = paginator.Paginator(api.get_projects_to_process(), options["page"])
+        pages = paginator.Paginator(internal.get_main_entities_to_process(), options["page"])
         for page in pages:
-            for project in page.object_list:
+            for obj in page.object_list:
                 try:
-                    api.process_project(project)
+                    internal.process_main_entity(obj)
                 except Exception as e:
                     logging.exception(e)
