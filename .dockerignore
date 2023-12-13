@@ -28,12 +28,9 @@ pip-wheel-metadata/
 /var
 /staticfiles
 /media
-/.devspace
 /.gitlab
 /api
 /bin
-/business
-/devspace
 /mk
 /qa
 /tests

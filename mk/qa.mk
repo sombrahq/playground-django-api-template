@@ -13,4 +13,4 @@ license:
 
 .PHONY: security
 security:
-	skjold -c qa/.skjold.toml audit poetry.lock
+	poetry export | skjold -c qa/.skjold.toml audit -

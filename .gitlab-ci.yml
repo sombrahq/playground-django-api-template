@@ -5,12 +5,13 @@ stages:
   - setup
   - quality
   - build
+  - release
   - deploy
 
 include:
   - .gitlab/setup.yml
-#  - .gitlab/qa.yml
-#  - .gitlab/legal.yml
-#  - .gitlab/security.yml
-#  - .gitlab/test.yml
-#  - .gitlab/build.yml
+  - .gitlab/qa.yml
+  - .gitlab/legal.yml
+  - .gitlab/security.yml
+  - .gitlab/test.yml
+  - .gitlab/build.yml

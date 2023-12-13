@@ -2,8 +2,8 @@ coverage:
   stage: quality
   image: python:3.11
   before_script:
-    - pip install poetry==1.6.1
-    - poetry export --with local  | pip install --no-cache-dir -r /dev/stdin
+    - pip install --no-cache-dir poetry==1.6.1
+    - poetry export --with local | pip install --no-cache-dir -r /dev/stdin
   script:
     - find . -name \*.pyc -delete
     - make coverage
