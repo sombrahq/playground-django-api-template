@@ -1,0 +1,25 @@
+---
+repo: https://github.com/sombrahq/playground-django-api-template.git
+vars:
+  - project
+  - author
+  - email
+  - entity
+patterns:
+  - pattern: "*"
+    abstract: true
+    default:
+      django-api-template: "{{ .project | kebabcase }}"
+      django_api_template: "{{ .project | snakecase }}"
+      Django API Template: "{{ .project | title }}"
+      Sombra Templates: "{{ .owner }}"
+      Yunier Rojas García, Yusnel Rojas García: "{{ .owner }}"
+      Yunier Rojas García: "{{ .owner }}"
+      templates@sombrahq.com: "{{ .email }}"
+      MainEntity: "{{ .entity | camelcase }}"
+      main-entity: "{{ .entity | kebabcase }}"
+      main_entity: "{{ .entity | snakecase }}"
+      main_entities: "{{ .entity | snakecase }}"
+  - pattern: README.md
+    default:
+      "- Yunier Rojas García": "- {{ .owner }}"
