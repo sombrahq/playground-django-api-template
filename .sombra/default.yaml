@@ -21,7 +21,6 @@ patterns:
       main_entity: "{{ .entity | snakecase }}"                  # Entity in snake_case
       main_entities: "{{ .entity | snakecase }}"                # Plural entity in snake_case
 
-  - pattern: .gitlab/*
   - pattern: api/*
   - pattern: django_api_template/*
   - pattern: django_api_template/**/*

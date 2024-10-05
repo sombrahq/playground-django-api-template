@@ -1,16 +1,3 @@
-build-mr:
-  image: docker:20.10.16
-  stage: build
-  services:
-    - docker:20.10.16-dind
-  variables:
-    IMAGE_TAG: $CI_PROJECT_NAME:$CI_COMMIT_REF_SLUG
-  script:
-    - docker build -t $IMAGE_TAG .
-  except:
-    - main
-  when: manual
-
 build:
   image: docker:20.10.16
   stage: build
