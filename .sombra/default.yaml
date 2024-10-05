@@ -1,25 +1,44 @@
 ---
-repo: https://github.com/sombrahq/playground-django-api-template.git
 vars:
-  - project
-  - author
-  - email
-  - entity
+  - project     # Core project name
+  - owner       # Owner or author name
+  - email       # Owner email address
+  - entity      # Main entity name
+
 patterns:
+  # Abstract pattern that defines global replacements but doesn't require files to be copied or processed
   - pattern: "*"
     abstract: true
     default:
-      django-api-template: "{{ .project | kebabcase }}"
-      django_api_template: "{{ .project | snakecase }}"
-      Django API Template: "{{ .project | title }}"
-      Sombra Templates: "{{ .owner }}"
-      Yunier Rojas García, Yusnel Rojas García: "{{ .owner }}"
-      Yunier Rojas García: "{{ .owner }}"
-      templates@sombrahq.com: "{{ .email }}"
-      MainEntity: "{{ .entity | camelcase }}"
-      main-entity: "{{ .entity | kebabcase }}"
-      main_entity: "{{ .entity | snakecase }}"
-      main_entities: "{{ .entity | snakecase }}"
+      django-api-template: "{{ .project | kebabcase }}"         # Kebab-case for folder names
+      django_api_template: "{{ .project | snakecase }}"         # Snake-case for Python package names
+      Django API Template: "{{ .project | title }}"             # Title case for documentation or titles
+      Yunier Rojas García: "{{ .owner }}"                       # Replacing owner
+      Yunier Rojas García, Yusnel Rojas García: "{{ .owner }}"  # Replacing owner
+      templates@sombrahq.com: "{{ .email }}"                    # Replacing email
+      MainEntity: "{{ .entity | camelcase }}"                   # Entity in CamelCase
+      main-entity: "{{ .entity | kebabcase }}"                  # Entity in kebab-case
+      main_entity: "{{ .entity | snakecase }}"                  # Entity in snake_case
+      main_entities: "{{ .entity | snakecase }}"                # Plural entity in snake_case
+
+  - pattern: .gitlab/*
+  - pattern: api/*
+  - pattern: django_api_template/*
+  - pattern: django_api_template/**/*
+  - pattern: docs/*
+  - pattern: mk/*
+  - pattern: qa/*
+  - pattern: tests/*
+  - pattern: .dockerignore
+  - pattern: .editorconfig
+  - pattern: .pre-commit-config.yaml
+  - pattern: .tool-versions
+  - pattern: Dockerfile
+  - pattern: example.env
+  - pattern: LICENSE
+  - pattern: Makefile
+  - pattern: manage.py
+  - pattern: mkdocs.yml
+  - pattern: pyproject.toml
   - pattern: README.md
-    default:
-      "- Yunier Rojas García": "- {{ .owner }}"
+

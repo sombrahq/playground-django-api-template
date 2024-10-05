@@ -1,5 +1,5 @@
 FROM bitnami/python:3.11
-LABEL maintainer="templates@sombrahq.com"
+LABEL maintainer="pepe@cojo.es"
 
 # Configure Python
 ENV PYTHONFAULTHANDLER=1 \
@@ -23,7 +23,7 @@ RUN python3 -m venv $POETRY_VENV \
     && $POETRY_VENV/bin/pip install poetry==${POETRY_VERSION}
 
 # Add `poetry` to PATH
-ENV PATH="/opt/.cache/virtualenvs/django-api-template-9TtSrW0h-py3.11/bin:${PATH}:${POETRY_VENV}/bin"
+ENV PATH="/opt/.cache/virtualenvs/example-9TtSrW0h-py3.11/bin:${PATH}:${POETRY_VENV}/bin"
 
 RUN groupadd -g 10001 worker && \
    useradd -u 10000 -g worker worker \
@@ -40,13 +40,13 @@ COPY --chown=worker:worker poetry.lock pyproject.toml ./
 
 RUN poetry install --only main --no-root --no-interaction --no-ansi
 RUN poetry env info --path
-RUN poetry env info --path && [ "$(poetry env info --path)" = "/opt/.cache/virtualenvs/django-api-template-9TtSrW0h-py3.11" ]
+RUN poetry env info --path && [ "$(poetry env info --path)" = "/opt/.cache/virtualenvs/example-9TtSrW0h-py3.11" ]
 
 # copy code
-COPY --chown=worker:worker django_api_template /app/django_api_template
+COPY --chown=worker:worker example /app/example
 COPY --chown=worker:worker ./manage.py /app/
 
 
 EXPOSE 8000
 
-CMD ["gunicorn", "--bind", ":8000", "--workers", "1", "django_api_template.wsgi"]
+CMD ["gunicorn", "--bind", ":8000", "--workers", "1", "example.wsgi"]
